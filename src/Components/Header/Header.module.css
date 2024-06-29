@@ -1,0 +1,39 @@
+header {
+  background-color: #262626;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 20px;
+  height: 80px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 900;
+  line-height: 24px;
+}
+
+header ul {
+  display: flex;
+  gap: 10px;
+}
+
+header li {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+header a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  width: 120px;
+  justify-content: center;
+  padding: 5px 0px;
+}
+
+header a > img {
+  display: none;
+}
