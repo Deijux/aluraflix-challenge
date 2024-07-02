@@ -6,3 +6,15 @@
   padding: 0;
   font-family: 'Roboto', sans-serif;
 }
+
+:root {
+  --padding: 0px 40px;
+  --color-front: #6bd1ff;
+  --color-back: #00c86f;
+  --color-innovación-gestión: #ffba05;
+  --color-azul: #2271d1;
+}
+
+body {
+  background-color: #000000e5;
+}
