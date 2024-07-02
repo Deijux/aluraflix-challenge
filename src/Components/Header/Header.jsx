@@ -11,13 +11,13 @@ function Header() {
         <li>
           <a href=''>
             <img src={homeDefault} alt='Home Icon' />
-            Home
+            <p>Home</p>
           </a>
         </li>
         <li>
           <a href=''>
             <img src={addDefault} alt='Añadir Icon' />
-            Nuevo Video
+            <p>Nuevo Video</p>
           </a>
         </li>
       </ul>
