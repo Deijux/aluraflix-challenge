@@ -1,5 +1,6 @@
 import Header from './Components/Header/Header'
-import Banner from './Components/Banner/Banner'
+import Main from './Components/Main/Main'
+import Footer from './Components/Footer/Footer'
 import '@fontsource/roboto'
 import '@fontsource/source-sans-pro'
 import './App.css'
@@ -8,7 +9,8 @@ function App() {
   return (
     <>
       <Header />
-      <Banner />
+      <Main />
+      <Footer />
     </>
   )
 }
