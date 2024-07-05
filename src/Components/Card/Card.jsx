@@ -15,7 +15,7 @@ function Card({ style, divider, onEdit }) {
         </button>
         <button
           className={Style.CardSection}
-          onClick={e => {
+          onClick={() => {
             onEdit()
           }}
         >
