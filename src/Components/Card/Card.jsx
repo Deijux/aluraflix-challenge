@@ -4,19 +4,24 @@ import TrashIcon from '../../assets/trashIcon.png'
 import EditIcon from '../../assets/editIcon.png'
 import Style from './Card.module.css'
 
-function Card({ style, divider }) {
+function Card({ style, divider, onEdit }) {
   return (
     <div style={style} className={Style.Card}>
       <img src={CardExample} alt='Card Example' />
       <div style={divider} className={Style.CardInfo}>
-        <div className={Style.CardSection}>
+        <button className={Style.CardSection}>
           <img src={TrashIcon} alt='Trash Icon' />
           <p>BORRAR</p>
-        </div>
-        <div className={Style.CardSection}>
+        </button>
+        <button
+          className={Style.CardSection}
+          onClick={e => {
+            onEdit()
+          }}
+        >
           <img src={EditIcon} alt='Edit Icon' />
           <p>EDITAR</p>
-        </div>
+        </button>
       </div>
     </div>
   )
@@ -25,6 +30,7 @@ function Card({ style, divider }) {
 Card.propTypes = {
   style: PropTypes.object,
   divider: PropTypes.object,
+  onEdit: PropTypes.func,
 }
 
 export default Card

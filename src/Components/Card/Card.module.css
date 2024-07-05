@@ -33,6 +33,9 @@
   align-items: center;
   gap: 20px;
   color: #fff;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .CardSection > img {
