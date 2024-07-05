@@ -1,5 +1,5 @@
 import Header from './Components/Header/Header'
-import Main from './Components/Main/Main'
+import Home from './pages/Home/Home'
 import Footer from './Components/Footer/Footer'
 import '@fontsource/roboto'
 import '@fontsource/source-sans-pro'
@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Header />
-      <Main />
+      <Home />
       <Footer />
     </>
   )
