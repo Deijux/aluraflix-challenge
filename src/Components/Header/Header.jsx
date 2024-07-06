@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import logoHeader from '../../assets/logoHeader.png'
-import addDefault from '../../assets/add-default.png'
-import homeDefault from '../../assets/home-default.png'
+import { GoHome } from 'react-icons/go'
+import { IoAddCircleOutline } from 'react-icons/io5'
 import Styles from './Header.module.css'
 
 function Header() {
@@ -18,7 +18,7 @@ function Header() {
               isActive ? `${Styles.link} ${Styles.linkActive}` : Styles.link
             }
           >
-            <img src={homeDefault} alt='Home Icon' />
+            <GoHome size={30} />
             <p>HOME</p>
           </NavLink>
         </li>
@@ -29,7 +29,7 @@ function Header() {
               isActive ? `${Styles.link} ${Styles.linkActive}` : Styles.link
             }
           >
-            <img src={addDefault} alt='Añadir Icon' />
+            <IoAddCircleOutline size={30} />
             <p>NUEVO VIDEO</p>
           </NavLink>
         </li>

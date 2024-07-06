@@ -49,7 +49,7 @@ header li {
   box-shadow: inset 0px 0px 13px 0px var(--color-azul);
 }
 
-.link > img {
+.link > svg {
   display: none;
 }
 
@@ -78,6 +78,7 @@ header li {
   .link {
     border: none;
     width: fit-content;
+    width: -moz-fit-content;
     transition: 0.1s linear;
   }
 
@@ -85,9 +86,8 @@ header li {
     display: none;
   }
 
-  .link > img {
+  .link > svg {
     display: block;
-    width: 30px;
   }
 
   .linkActive {
