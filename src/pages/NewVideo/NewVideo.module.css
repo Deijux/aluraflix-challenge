@@ -47,7 +47,7 @@
 .allInputs {
   display: flex;
   flex-flow: wrap row;
-  gap: 10px;
+  gap: 50px 10px;
 }
 
 .input {
@@ -57,6 +57,10 @@
   width: 100%;
   max-width: 49%;
   gap: 6px;
+}
+
+.input > label {
+  font-weight: 600;
 }
 
 .input > input,
@@ -93,6 +97,7 @@
   cursor: pointer;
   width: 100%;
   max-width: 120px;
+  font-weight: 900;
 }
 
 .buttons > button:first-child {
