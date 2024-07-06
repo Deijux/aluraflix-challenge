@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 430px;
+  max-width: 530px;
   min-width: 300px;
   background-color: #000000e5;
   border-radius: 25px;
@@ -36,6 +36,7 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
+  font-family: 'Roboto', sans-serif;
 }
 
 .CardSection > img {
@@ -46,4 +47,14 @@
   font-weight: 800;
   font-size: 16px;
   line-height: 19px;
+}
+
+@media (width <= 470px) {
+  .Card:first-child {
+    margin: 0px 0px 0px 10px;
+  }
+
+  .Card:last-child {
+    margin: 0px 10px 0px 0px;
+  }
 }
