@@ -1,8 +1,32 @@
-import OptionList from '../../Components/OptionList/OptionList'
+import { useState } from 'react'
+import OptionList from '../../components/OptionList/OptionList'
 import categoryData from '../../data/CategoryData'
+import { useData } from '../../contexts/DataContext'
 import Style from './NewVideo.module.css'
 
 function NewVideo() {
+  const { postVideo } = useData()
+
+  const initialData = {
+    title: '',
+    category: '',
+    photo: '',
+    link: '',
+    description: '',
+  }
+
+  const [data, setData] = useState(initialData)
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    postVideo(data)
+  }
+
+  const handleChange = e => {
+    const { id, value } = e.target
+    setData({ ...data, [id]: value })
+  }
+
   return (
     <section className={Style.newVideo}>
       <div className={Style.title}>
@@ -13,38 +37,61 @@ function NewVideo() {
         <h2>Crear Tarjeta</h2>
         <div className={Style.allInputs}>
           <div className={Style.input}>
-            <label htmlFor='titulo'>Titulo</label>
-            <input id='titulo' type='text' placeholder='Ingrese el título' />
-          </div>
-          <div className={Style.input}>
-            <label htmlFor='categoria'>Categoría</label>
-            <OptionList
-              section='addVideo'
-              name='categoria'
-              id='categoria'
-              optionsAll={categoryData}
+            <label htmlFor='title'>Título</label>
+            <input
+              id='title'
+              type='text'
+              placeholder='Ingrese el título'
+              onChange={handleChange}
             />
           </div>
           <div className={Style.input}>
-            <label htmlFor='imagen'>Imagen</label>
-            <input type='url' placeholder='Ingrese el enlace de la imagen' />
+            <label htmlFor='category'>Categoría</label>
+            <OptionList
+              section='addVideo'
+              name='category'
+              id='category'
+              optionsAll={categoryData}
+              onChange={e => {
+                handleChange({
+                  target: { id: 'category', value: e.target.value },
+                })
+              }}
+            />
           </div>
           <div className={Style.input}>
-            <label htmlFor='video'>Video</label>
-            <input type='url' placeholder='Ingrese el enlace del video' />
+            <label htmlFor='photo'>Imagen</label>
+            <input
+              id='photo'
+              type='url'
+              placeholder='Ingrese el enlace de la imagen'
+              onChange={handleChange}
+            />
           </div>
           <div className={Style.input}>
-            <label htmlFor='descripcion'>Descripción</label>
+            <label htmlFor='link'>Video</label>
+            <input
+              id='link'
+              type='url'
+              placeholder='Ingrese el enlace del video'
+              onChange={handleChange}
+            />
+          </div>
+          <div className={Style.input}>
+            <label htmlFor='description'>Descripción</label>
             <textarea
-              name='descripcion'
-              id='descripcion'
+              name='description'
+              id='description'
               cols='30'
               placeholder='¿De que trata este video?'
+              onChange={handleChange}
             ></textarea>
           </div>
         </div>
         <div className={Style.buttons}>
-          <button type='submit'>GUARDAR</button>
+          <button onClick={handleSubmit} type='submit'>
+            GUARDAR
+          </button>
           <button type='reset'>LIMPIAR</button>
         </div>
       </form>
