@@ -1,13 +1,19 @@
 import { PropTypes } from 'prop-types'
-import CardExample from '../../assets/cardExample.jpg'
 import TrashIcon from '../../assets/trashIcon.png'
 import EditIcon from '../../assets/editIcon.png'
 import Style from './Card.module.css'
 
-function Card({ style, divider, onEdit }) {
+function Card({ style, divider, onEdit, image, link }) {
   return (
     <div style={style} className={Style.Card}>
-      <img src={CardExample} alt='Card Example' />
+      <a
+        className={Style.imgLink}
+        href={link}
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        <img src={image} width='530px' alt='Card Example' />
+      </a>
       <div style={divider} className={Style.CardInfo}>
         <button className={Style.CardSection}>
           <img src={TrashIcon} alt='Trash Icon' />
@@ -31,6 +37,8 @@ Card.propTypes = {
   style: PropTypes.object,
   divider: PropTypes.object,
   onEdit: PropTypes.func,
+  image: PropTypes.string,
+  link: PropTypes.string,
 }
 
 export default Card

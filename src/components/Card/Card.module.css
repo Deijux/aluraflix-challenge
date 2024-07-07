@@ -2,17 +2,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-width: 530px;
-  min-width: 300px;
-  background-color: #000000e5;
+  width: 530px;
   border-radius: 25px;
   border: 5px solid #6bd1ff;
   background-color: transparent;
+  min-width: 530px;
 }
 
-.Card > img {
+.imgLink {
+  height: 100%;
+  display: flex;
+}
+
+.imgLink > img {
   width: 100%;
-  border-radius: 25px 25px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
   z-index: -1;
 }
 
@@ -56,5 +60,17 @@
 
   .Card:last-child {
     margin: 0px 10px 0px 0px;
+  }
+}
+
+@media (width <= 1400px) {
+  .Card {
+    min-width: 450px;
+  }
+}
+
+@media (orientation: portrait) {
+  .Card {
+    min-width: 300px;
   }
 }

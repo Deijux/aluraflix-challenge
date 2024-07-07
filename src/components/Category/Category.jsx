@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types'
 import Card from '../Card/Card'
 import Style from './Category.module.css'
 
-function Category({ datos, onCardEdit }) {
+function Category({ datos, onCardEdit, cards }) {
   let { name, style } = datos
   const styles = {
     backgroundColor: `${style}`,
@@ -21,21 +21,16 @@ function Category({ datos, onCardEdit }) {
         {name}
       </h3>
       <div className={Style.cardList}>
-        <Card
-          style={stylesCard}
-          divider={divider}
-          onEdit={() => onCardEdit()}
-        />
-        <Card
-          style={stylesCard}
-          divider={divider}
-          onEdit={() => onCardEdit()}
-        />
-        <Card
-          style={stylesCard}
-          divider={divider}
-          onEdit={() => onCardEdit()}
-        />
+        {cards.map(card => (
+          <Card
+            style={stylesCard}
+            divider={divider}
+            onEdit={() => onCardEdit()}
+            key={card.id}
+            image={card.photo}
+            link={card.link}
+          />
+        ))}
       </div>
     </div>
   )
@@ -47,6 +42,14 @@ Category.propTypes = {
     style: PropTypes.string.isRequired,
   }).isRequired,
   onCardEdit: PropTypes.func.isRequired,
+  cards: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      link: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
 }
 
 export default Category

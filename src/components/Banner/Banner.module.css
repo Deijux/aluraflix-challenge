@@ -49,14 +49,25 @@
   text-wrap: balance;
 }
 
+.imageLink {
+  width: 100%;
+  max-width: 800px;
+  min-width: 460px;
+  box-shadow: inset 0px 0px 20px 2px var(--color-front);
+  border-radius: 20px;
+  border: 5px solid var(--color-front);
+  display: flex;
+}
+
 .playerImage {
   width: 100%;
   max-width: 800px;
-  border-radius: 20px;
+  border-radius: 15px;
   min-width: 460px;
+  z-index: -1;
 }
 
-@media (width <= 1024px) {
+@media (orientation: portrait) {
   .banner {
     display: none;
     padding: 20px;
