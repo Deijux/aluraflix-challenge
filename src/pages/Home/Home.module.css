@@ -5,7 +5,7 @@
   padding: var(--padding);
 }
 
-@media (width <= 1024px) {
+@media (orientation: portrait) {
   .main {
     padding: 0px 0px 0px 40px;
   }
