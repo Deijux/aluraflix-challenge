@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types'
 import Style from './Input.module.css'
 
-function Input({ type, placeholder, value, name, id }) {
+function Input({ type, placeholder, value, name, id, onChange }) {
   return (
     <input
       className={Style.input}
@@ -9,6 +9,8 @@ function Input({ type, placeholder, value, name, id }) {
       id={id}
       name={name}
       placeholder={placeholder}
+      value={value}
+      onChange={onChange}
     />
   )
 }
@@ -19,6 +21,7 @@ Input.propTypes = {
   value: PropTypes.string,
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 }
 
 export default Input
