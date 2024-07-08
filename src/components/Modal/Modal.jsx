@@ -1,11 +1,40 @@
+import { useState, useEffect, useMemo } from 'react'
 import { PropTypes } from 'prop-types'
 import Input from '../Input/Input'
 import OptionList from '../OptionList/OptionList'
-import categoryData from '../../data/CategoryData'
 import ExitIcon from '../../assets/exitIcon.png'
 import Style from './Modal.module.css'
 
-function Modal({ isOpen, onClose }) {
+function Modal({ isOpen, onClose, cardActive, onUpdate, categories }) {
+  const initialFormData = useMemo(
+    () => ({
+      title: '',
+      category: '',
+      photo: '',
+      link: '',
+      description: '',
+    }),
+    [],
+  )
+
+  const [formData, setFormData] = useState(initialFormData)
+
+  useEffect(() => {
+    if (isOpen && cardActive) {
+      setFormData({ ...cardActive })
+    }
+  }, [cardActive, isOpen, initialFormData])
+
+  const handleChange = e => {
+    const { id, value } = e.target
+    setFormData({ ...formData, [id]: value.toString() })
+  }
+
+  const handleSave = e => {
+    e.preventDefault()
+    onUpdate(formData)
+  }
+
   if (!isOpen) {
     return null
   }
@@ -23,51 +52,60 @@ function Modal({ isOpen, onClose }) {
               <label htmlFor='titulo'>Título</label>
               <Input
                 type='text'
-                name='titulo'
-                id='titulo'
+                name='title'
+                id='title'
                 placeholder='Título'
-                value='Título'
+                value={formData.title}
+                onChange={handleChange}
               />
             </div>
             <div className={Style.input}>
               <label htmlFor='categoria'>Categoría</label>
               <OptionList
-                name='categoria'
-                id='categoria'
-                optionsAll={categoryData}
+                name='category'
+                id='category'
+                optionsAll={categories}
+                value={formData.category}
+                onChange={handleChange}
               />
             </div>
             <div className={Style.input}>
               <label htmlFor='imagen'>Imagen</label>
               <Input
                 type='url'
-                name='imagen'
-                id='imagen'
+                name='photo'
+                id='photo'
                 placeholder='Imagen'
-                value='Imagen'
+                value={formData.photo}
+                onChange={handleChange}
               />
             </div>
             <div className={Style.input}>
               <label htmlFor='video'>Video</label>
               <Input
                 type='url'
-                name='video'
-                id='video'
+                name='link'
+                id='link'
                 placeholder='Video'
-                value='Video'
+                value={formData.link}
+                onChange={handleChange}
               />
             </div>
             <div className={Style.input}>
               <label htmlFor='descripcion'>Descripción</label>
               <textarea
-                name='descripcion'
-                id='descripcion'
+                name='description'
+                id='description'
                 placeholder='Descripción'
+                value={formData.description}
+                onChange={handleChange}
               ></textarea>
             </div>
           </div>
           <div className={Style.buttons}>
-            <button type='submit'>GUARDAR</button>
+            <button onClick={handleSave} type='submit'>
+              GUARDAR
+            </button>
             <button type='reset'>LIMPIAR</button>
           </div>
         </form>
@@ -79,6 +117,9 @@ function Modal({ isOpen, onClose }) {
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  cardActive: PropTypes.object,
+  onUpdate: PropTypes.func.isRequired,
+  categories: PropTypes.array.isRequired,
 }
 
 export default Modal
