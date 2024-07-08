@@ -1,11 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import OptionList from '../../components/OptionList/OptionList'
-import categoryData from '../../data/CategoryData'
 import { useData } from '../../contexts/DataContext'
 import Style from './NewVideo.module.css'
 
 function NewVideo() {
-  const { postVideo } = useData()
+  const { categories = [], postVideo } = useData()
 
   const initialData = {
     title: '',
@@ -16,6 +15,15 @@ function NewVideo() {
   }
 
   const [data, setData] = useState(initialData)
+
+  useEffect(() => {
+    if (categories.length > 0) {
+      setData(prevData => ({
+        ...prevData,
+        category: categories[0].name,
+      }))
+    }
+  }, [categories])
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -51,7 +59,7 @@ function NewVideo() {
               section='addVideo'
               name='category'
               id='category'
-              optionsAll={categoryData}
+              optionsAll={categories}
               onChange={e => {
                 handleChange({
                   target: { id: 'category', value: e.target.value },
