@@ -1,5 +1,8 @@
 import { createContext, useState, useContext, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import VideoData from '../data/VideoData'
+import CategoryData from '../data/CategoryData'
+import BannerData from '../data/BannerData'
 
 const DataContext = createContext()
 
@@ -15,34 +18,57 @@ function DataProvider({ children }) {
   const [videos, setVideos] = useState([])
   const [categories, setCategories] = useState([])
   const [banner, setBanner] = useState([])
+  const [fetching, setFetching] = useState(true)
 
   const fetchVideos = async () => {
     try {
       const res = await fetch(URL_VIDEOS_API)
+      if (!res.ok) {
+        throw new Error('Network response was not ok')
+      }
       const data = await res.json()
       setVideos(data)
     } catch (error) {
-      console.error(error)
+      console.error(
+        'Failed to fetch videos from API, loading local data:',
+        error,
+      )
+      setVideos(VideoData)
     }
   }
 
   const fetchCategories = async () => {
     try {
       const res = await fetch(URL_CATEGORIES_API)
+      if (!res.ok) {
+        throw new Error('Network response was not ok')
+      }
       const data = await res.json()
       setCategories(data)
     } catch (error) {
-      console.error(error)
+      console.error(
+        'Failed to fetch categories from API, loading local data:',
+        error,
+      )
+      setCategories(CategoryData)
+      console.log(CategoryData)
     }
   }
 
   const fetchBanner = async () => {
     try {
       const res = await fetch(URL_BANNER_API)
+      if (!res.ok) {
+        throw new Error('Network response was not ok')
+      }
       const data = await res.json()
       setBanner(data)
     } catch (error) {
-      console.error(error)
+      console.error(
+        'Failed to fetch banner from API, loading local data:',
+        error,
+      )
+      setBanner(BannerData)
     }
   }
 
@@ -52,8 +78,11 @@ function DataProvider({ children }) {
   }, [])
 
   useEffect(() => {
-    fetchVideos()
-  }, [videos])
+    if (fetching) {
+      fetchVideos()
+      setFetching(false)
+    }
+  }, [fetching])
 
   const postVideo = async video => {
     try {
@@ -82,6 +111,7 @@ function DataProvider({ children }) {
       })
       const data = await res.json()
       setVideos([...videos, setVideos(data)])
+      setFetching(true)
     } catch (error) {
       console.error(error)
     }
@@ -100,7 +130,14 @@ function DataProvider({ children }) {
 
   return (
     <DataContext.Provider
-      value={{ videos, categories, banner, postVideo, editVideo, deleteVideo }}
+      value={{
+        videos,
+        categories,
+        banner,
+        postVideo,
+        editVideo,
+        deleteVideo,
+      }}
     >
       {children}
     </DataContext.Provider>
