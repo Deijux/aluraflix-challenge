@@ -6,7 +6,7 @@ import { useData } from '../../contexts/DataContext'
 import Style from './Home.module.css'
 
 function Home() {
-  const { videos, categories, banner } = useData()
+  const { videos = [], categories = [], banner = [], deleteVideo } = useData()
   const [modalOpen, setModalOpen] = useState(false)
 
   const handleModalClose = () => {
@@ -17,6 +17,10 @@ function Home() {
     setModalOpen(true)
   }
 
+  const handleDelete = id => {
+    deleteVideo(id)
+  }
+
   return (
     <>
       <main className={Style.main}>
@@ -25,8 +29,9 @@ function Home() {
           <Category
             key={category.id}
             datos={category}
-            cards={videos.filter(video => video.category === category.name)}
+            cards={videos.filter(video => video?.category === category.name)}
             onCardEdit={handleCardEdit}
+            OnCardDelete={handleDelete}
           />
         ))}
       </main>
