@@ -71,36 +71,28 @@
       "photo": "https://i.ytimg.com/vi/6N3OkLCfK-0/maxresdefault.jpg",
       "link": "https://www.youtube.com/embed/6N3OkLCfK-0?si=SXigFqE97aDxrbjm",
       "description": "En este video nuestra invitada, Andyara, nos explicará que són las muy conocidas hoy en día metodologias ágiles y nos comentará un poco sobre como aplicarlas y cuáles son los beneficios de utilizarlas en su equipo o empresa."
-    },
-    {
-      "id": "5a59",
-      "title": "5 Habilidades que te darán ventajas sobre otros Programadores",
-      "category": "BACK END",
-      "photo": "https://i.ytimg.com/vi/9YxUt3sGovA/maxresdefault.jpg",
-      "link": "https://www.youtube.com/embed/9YxUt3sGovA?si=aInOKpgAha5XWw5D",
-      "description": "Si eres un programador, desarrollador de software o principiante en estas areas, estas son 5 habilidades que puedes aprender para poder obtener una ventaja competitiva sobre otros programadores al momento de trabajar para una empresa de software."
     }
   ],
   "categorias": [
     {
-      "id": 1,
+      "id": "1",
       "name": "FRONT END",
       "style": "var(--color-front)"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "BACK END",
       "style": "var(--color-back)"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "INNOVACIÓN Y GESTIÓN",
       "style": "var(--color-innovación-gestión)"
     }
   ],
   "banner": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Challenge React",
       "category": "FRONT END",
       "photo": "https://i.ytimg.com/vi/ov7vA5HFe6w/maxresdefault.jpg",
