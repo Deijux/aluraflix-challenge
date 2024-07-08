@@ -37,7 +37,7 @@ function Banner({ data }) {
 
       {dataInfo === undefined && (
         <div className={Style.titleBanner}>
-          <h2>Ocurrió un error con el servidor!</h2>
+          <h2>Cargando...</h2>
         </div>
       )}
     </section>
