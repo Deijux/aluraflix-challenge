@@ -25,7 +25,7 @@ function Category({ datos, onCardEdit, OnCardDelete, cards }) {
           <Card
             style={stylesCard}
             divider={divider}
-            onEdit={() => onCardEdit()}
+            onEdit={() => onCardEdit(card)}
             onDelete={() => OnCardDelete(card.id)}
             key={card.id}
             image={card.photo}
