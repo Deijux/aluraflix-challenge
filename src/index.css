@@ -48,6 +48,7 @@
 
 :root {
   --padding: 0px 40px;
+  --items-padding: 40px;
   --color-front: #6bd1ff;
   --color-back: #00c86f;
   --color-innovación-gestión: #ffba05;

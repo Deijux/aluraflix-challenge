@@ -9,6 +9,14 @@
   min-width: 530px;
 }
 
+.Card:first-child {
+  margin: 0px 0px 0px var(--items-padding);
+}
+
+.Card:last-child {
+  margin: 0px var(--items-padding) 0px 0px;
+}
+
 .imgLink {
   height: 100%;
   display: flex;
