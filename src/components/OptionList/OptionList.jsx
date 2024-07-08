@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types'
 import Style from './OptionList.module.css'
 
-function OptionList({ section, name, id, optionsAll, onChange }) {
+function OptionList({ section, name, id, optionsAll, onChange, value }) {
   let styles = {}
 
   if (section == 'addVideo') {
@@ -18,6 +18,7 @@ function OptionList({ section, name, id, optionsAll, onChange }) {
       className={Style.select}
       name={name}
       id={id}
+      value={value}
       onChange={e => {
         onChange(e)
       }}
@@ -37,6 +38,7 @@ OptionList.propTypes = {
   id: PropTypes.string.isRequired,
   optionsAll: PropTypes.array.isRequired,
   onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
 }
 
 export default OptionList
