@@ -6,19 +6,31 @@ import { useData } from '../../contexts/DataContext'
 import Style from './Home.module.css'
 
 function Home() {
-  const { videos = [], categories = [], banner = [], deleteVideo } = useData()
+  const {
+    videos = [],
+    categories = [],
+    banner = [],
+    editVideo,
+    deleteVideo,
+  } = useData()
   const [modalOpen, setModalOpen] = useState(false)
+  const [cardOpen, setCardOpen] = useState(null)
 
   const handleModalClose = () => {
     setModalOpen(false)
   }
 
-  const handleCardEdit = () => {
+  const handleCardEdit = video => {
+    setCardOpen(video)
     setModalOpen(true)
   }
 
   const handleDelete = id => {
     deleteVideo(id)
+  }
+
+  const handleUpdate = cardUpdated => {
+    editVideo(cardUpdated.id, cardUpdated)
   }
 
   return (
@@ -35,7 +47,13 @@ function Home() {
           />
         ))}
       </main>
-      <Modal isOpen={modalOpen} onClose={handleModalClose} />
+      <Modal
+        cardActive={cardOpen}
+        isOpen={modalOpen}
+        onClose={handleModalClose}
+        onUpdate={handleUpdate}
+        categories={categories}
+      />
     </>
   )
 }
