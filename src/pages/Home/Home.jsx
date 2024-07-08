@@ -36,7 +36,8 @@ function Home() {
   return (
     <>
       <main className={Style.main}>
-        <Banner data={banner} />
+        {categories.length === 0 && <h2>Cargando...</h2>}
+        {categories.length !== 0 && <Banner data={banner} />}
         {categories.map(category => (
           <Category
             key={category.id}
