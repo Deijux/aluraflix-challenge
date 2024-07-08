@@ -22,7 +22,7 @@ function DataProvider({ children }) {
       const data = await res.json()
       setVideos(data)
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
@@ -32,7 +32,7 @@ function DataProvider({ children }) {
       const data = await res.json()
       setCategories(data)
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
@@ -42,15 +42,18 @@ function DataProvider({ children }) {
       const data = await res.json()
       setBanner(data)
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
   useEffect(() => {
-    fetchVideos()
     fetchCategories()
     fetchBanner()
   }, [])
+
+  useEffect(() => {
+    fetchVideos()
+  }, [videos])
 
   const postVideo = async video => {
     try {
@@ -64,12 +67,25 @@ function DataProvider({ children }) {
       const data = await res.json()
       setVideos([...videos, setVideos(data)])
     } catch (error) {
-      console.log(error)
+      console.error(error)
+    }
+  }
+
+  const deleteVideo = async id => {
+    try {
+      await fetch(`${URL_VIDEOS_API}/${id}`, {
+        method: 'DELETE',
+      })
+      setVideos(videos.filter(video => video.id !== id))
+    } catch (error) {
+      console.error(error)
     }
   }
 
   return (
-    <DataContext.Provider value={{ videos, categories, banner, postVideo }}>
+    <DataContext.Provider
+      value={{ videos, categories, banner, postVideo, deleteVideo }}
+    >
       {children}
     </DataContext.Provider>
   )
