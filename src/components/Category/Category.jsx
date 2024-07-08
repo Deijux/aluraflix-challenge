@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types'
 import Card from '../Card/Card'
 import Style from './Category.module.css'
 
-function Category({ datos, onCardEdit, cards }) {
+function Category({ datos, onCardEdit, OnCardDelete, cards }) {
   let { name, style } = datos
   const styles = {
     backgroundColor: `${style}`,
@@ -26,6 +26,7 @@ function Category({ datos, onCardEdit, cards }) {
             style={stylesCard}
             divider={divider}
             onEdit={() => onCardEdit()}
+            onDelete={() => OnCardDelete(card.id)}
             key={card.id}
             image={card.photo}
             link={card.link}
@@ -42,6 +43,7 @@ Category.propTypes = {
     style: PropTypes.string.isRequired,
   }).isRequired,
   onCardEdit: PropTypes.func.isRequired,
+  OnCardDelete: PropTypes.func.isRequired,
   cards: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
