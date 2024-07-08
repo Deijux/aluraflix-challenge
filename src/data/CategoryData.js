@@ -1,4 +1,4 @@
-const categoryData = [
+const CategoryData = [
   {
     id: 1,
     name: 'FRONT END',
@@ -16,4 +16,4 @@ const categoryData = [
   },
 ]
 
-export default categoryData
+export default CategoryData
