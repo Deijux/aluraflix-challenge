@@ -71,6 +71,22 @@ function DataProvider({ children }) {
     }
   }
 
+  const editVideo = async (id, video) => {
+    try {
+      const res = await fetch(`${URL_VIDEOS_API}/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(video),
+      })
+      const data = await res.json()
+      setVideos([...videos, setVideos(data)])
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   const deleteVideo = async id => {
     try {
       await fetch(`${URL_VIDEOS_API}/${id}`, {
@@ -84,7 +100,7 @@ function DataProvider({ children }) {
 
   return (
     <DataContext.Provider
-      value={{ videos, categories, banner, postVideo, deleteVideo }}
+      value={{ videos, categories, banner, postVideo, editVideo, deleteVideo }}
     >
       {children}
     </DataContext.Provider>
