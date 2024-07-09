@@ -95,6 +95,7 @@ function DataProvider({ children }) {
       })
       const data = await res.json()
       setVideos([...videos, setVideos(data)])
+      setFetching(true)
     } catch (error) {
       console.error(error)
     }
