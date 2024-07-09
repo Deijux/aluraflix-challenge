@@ -59,6 +59,11 @@
   gap: 6px;
 }
 
+.error {
+  color: red;
+  font-size: 18px;
+}
+
 .input > label {
   font-weight: 600;
 }
@@ -104,6 +109,10 @@
 
 .buttons > button:first-child {
   border: 2px solid #2271d1;
+}
+
+.buttons > button:first-child:disabled {
+  border: none;
 }
 
 @media (width <= 470px) {
