@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import OptionList from '../../components/OptionList/OptionList'
 import { useData } from '../../contexts/DataContext'
+import { FormValidate } from '../../validation/FormValidate'
 import Style from './NewVideo.module.css'
 
 function NewVideo() {
-  const { categories = [], postVideo } = useData()
-
   const initialData = {
     title: '',
     category: '',
@@ -14,7 +13,86 @@ function NewVideo() {
     description: '',
   }
 
+  const initialStateFields = {
+    title: false,
+    category: false,
+    photo: false,
+    link: false,
+    description: false,
+  }
+
+  const styleErrorDefault = {
+    titleColorText: {},
+    titleBorderColor: {},
+    photoColorText: {},
+    photoBorderColor: {},
+    linkColorText: {},
+    linkBorderColor: {},
+    descriptionColorText: {},
+    descriptionBorderColor: {},
+  }
+
+  const styleErrorApply = {
+    colorText: 'red',
+    border: '2px solid red',
+  }
+
+  const { categories = [], postVideo } = useData()
+  const [errors, setErrors] = useState({})
   const [data, setData] = useState(initialData)
+  const [fields, setFields] = useState(initialStateFields)
+  const [styleError, setStyleError] = useState(styleErrorDefault)
+  const [buttonDisabled, setButtonDisabled] = useState(true)
+
+  const validateFormAndSetErrors = async () => {
+    const formErrors = await FormValidate(data)
+    setErrors(formErrors)
+  }
+  const handleBlur = field => {
+    setFields({ ...fields, [field]: true })
+    validateFormAndSetErrors()
+  }
+
+  const isFormFilled = formData => {
+    return (
+      formData.title.trim() !== '' &&
+      formData.category.trim() !== '' &&
+      formData.photo.trim() !== '' &&
+      formData.link.trim() !== '' &&
+      formData.description.trim() !== ''
+    )
+  }
+
+  const isErrorsActive = () => {
+    return (
+      errors.title === undefined &&
+      errors.category == undefined &&
+      errors.photo === undefined &&
+      errors.link === undefined &&
+      errors.description === undefined
+    )
+  }
+
+  const handleSubmit = async e => {
+    e.preventDefault()
+    await validateFormAndSetErrors()
+    if (isFormFilled(data) && Object.keys(errors).length === 0) {
+      postVideo(data)
+    }
+  }
+
+  const handleChange = e => {
+    const { id, value } = e.target
+    setData({ ...data, [id]: value })
+  }
+
+  const handleButtonDisabled = value => {
+    if (isFormFilled(data) && value) {
+      setButtonDisabled(false)
+    } else {
+      setButtonDisabled(true)
+    }
+  }
 
   useEffect(() => {
     if (categories.length > 0) {
@@ -25,15 +103,66 @@ function NewVideo() {
     }
   }, [categories])
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    postVideo(data)
-  }
+  useEffect(() => {
+    if (errors.title && fields.title) {
+      setStyleError({
+        ...styleError,
+        titleColorText: { color: styleErrorApply.colorText },
+        titleBorderColor: { border: styleErrorApply.border },
+      })
+      console.log('hay error')
+    } else if (!errors.title) {
+      setStyleError({
+        ...styleError,
+        titleColorText: {},
+        titleBorderColor: {},
+      })
+    }
 
-  const handleChange = e => {
-    const { id, value } = e.target
-    setData({ ...data, [id]: value })
-  }
+    if (errors.photo && fields.photo) {
+      setStyleError({
+        ...styleError,
+        photoColorText: { color: styleErrorApply.colorText },
+        photoBorderColor: { border: styleErrorApply.border },
+      })
+    } else if (!errors.photo) {
+      setStyleError({
+        ...styleError,
+        photoColorText: {},
+        photoBorderColor: {},
+      })
+    }
+
+    if (errors.link && fields.link) {
+      setStyleError({
+        ...styleError,
+        linkColorText: { color: styleErrorApply.colorText },
+        linkBorderColor: { border: styleErrorApply.border },
+      })
+    } else if (!errors.link) {
+      setStyleError({
+        ...styleError,
+        linkColorText: {},
+        linkBorderColor: {},
+      })
+    }
+
+    if (errors.description && fields.description) {
+      setStyleError({
+        ...styleError,
+        descriptionColorText: { color: styleErrorApply.colorText },
+        descriptionBorderColor: { border: styleErrorApply.border },
+      })
+    } else if (!errors.description) {
+      setStyleError({
+        ...styleError,
+        descriptionColorText: {},
+        descriptionBorderColor: {},
+      })
+    }
+
+    handleButtonDisabled(isErrorsActive())
+  }, [errors, fields, data])
 
   return (
     <section className={Style.newVideo}>
@@ -45,13 +174,25 @@ function NewVideo() {
         <h2>Crear Tarjeta</h2>
         <div className={Style.allInputs}>
           <div className={Style.input}>
-            <label htmlFor='title'>Título</label>
+            <label style={styleError.titleColorText} htmlFor='title'>
+              Título
+            </label>
             <input
+              style={styleError.titleBorderColor}
               id='title'
               type='text'
               placeholder='Ingrese el título'
-              onChange={handleChange}
+              onChange={e => {
+                handleChange(e)
+                handleBlur('title')
+              }}
+              onBlur={() => {
+                handleBlur('title')
+              }}
             />
+            {errors.title && fields.title && (
+              <p className={Style.error}>{errors.title}</p>
+            )}
           </div>
           <div className={Style.input}>
             <label htmlFor='category'>Categoría</label>
@@ -68,36 +209,79 @@ function NewVideo() {
             />
           </div>
           <div className={Style.input}>
-            <label htmlFor='photo'>Imagen</label>
+            <label style={styleError.photoColorText} htmlFor='photo'>
+              Imagen
+            </label>
             <input
+              style={styleError.photoBorderColor}
               id='photo'
               type='url'
               placeholder='Ingrese el enlace de la imagen'
-              onChange={handleChange}
+              onChange={e => {
+                handleChange(e)
+                handleBlur('photo')
+              }}
+              onBlur={() => {
+                handleBlur('photo')
+              }}
             />
+            {errors.photo && fields.photo && (
+              <p className={Style.error}>{errors.photo}</p>
+            )}
           </div>
           <div className={Style.input}>
-            <label htmlFor='link'>Video</label>
+            <label style={styleError.linkColorText} htmlFor='link'>
+              Video
+            </label>
             <input
+              style={styleError.linkBorderColor}
               id='link'
               type='url'
               placeholder='Ingrese el enlace del video'
-              onChange={handleChange}
+              onChange={e => {
+                handleChange(e)
+                handleBlur('link')
+              }}
+              onBlur={() => {
+                handleBlur('link')
+              }}
             />
+            {errors.link && fields.link && (
+              <p className={Style.error}>{errors.link}</p>
+            )}
           </div>
           <div className={Style.input}>
-            <label htmlFor='description'>Descripción</label>
+            <label
+              style={styleError.descriptionColorText}
+              htmlFor='description'
+            >
+              Descripción
+            </label>
             <textarea
+              style={styleError.descriptionBorderColor}
               name='description'
               id='description'
               cols='30'
               placeholder='¿De que trata este video?'
-              onChange={handleChange}
+              onChange={e => {
+                handleChange(e)
+                handleBlur('description')
+              }}
+              onBlur={() => {
+                handleBlur('description')
+              }}
             ></textarea>
+            {errors.description && fields.description && (
+              <p className={Style.error}>{errors.description}</p>
+            )}
           </div>
         </div>
         <div className={Style.buttons}>
-          <button onClick={handleSubmit} type='submit'>
+          <button
+            onClick={handleSubmit}
+            disabled={buttonDisabled}
+            type='submit'
+          >
             GUARDAR
           </button>
           <button type='reset'>LIMPIAR</button>
