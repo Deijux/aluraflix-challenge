@@ -1,8 +1,53 @@
-# React + Vite
+<div align="center">
+<h1>
+    <img src='./src/assets/logoHeader.png' />
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<p>
+AluraFlix es un proyecto realizado para el challenge React de Alura Latam Grupo 6, se trata de una aplicación web para agregar, editar y eliminar videos!
+</p>
 
-Currently, two official plugins are available:
+![React Badge](https://img.shields.io/badge/React-3a88f5?logo=react&logoColor=fff&style=flat)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+</div>
+
+## 🛠️ Stack
+
+- [**React**](https://es.react.dev//) - Biblioteca para interfaces de usuario web y nativas.
+
+## 🚨 Importante
+
+Si quieres prrevisualizar la página web puedes acceder al siguiente [link](https://aluraflix-challenge-amber.vercel.app/), pero no cuenta con las funcionalidade de añadir, editar y eliminar.
+
+<p>
+Si al contrario quieres comprobar todas las funcionalidades de la página haz los siguientes pasos!
+</p>
+
+## 🚀 Getting Started
+
+1. Haz [Fork](https://github.com/Deijux/ToDoApp/fork) o clona este repositorio.
+
+   ```bash
+   git clone https://github.com/Deijux/aluraflix-challenge.git
+   ```
+
+2. Instala las dependencias:
+
+   - Usa [npm](https://www.npmjs.com/) para instalar y manejar las dependencias.
+
+   ```bash
+   # instala las depencias mediante npm
+   npm install
+   ```
+
+3. Corre el servidor de desarrollo y la base de datos:
+
+   ```bash
+   # Inicia el servidor de desarrollo con npm
+   npm run dev
+
+   # Inicia la base de datos
+   npm run database
+   ```
+
+4. Abre [**http://localhost:5173**](http://localhost:5173/) en tu navegador para ver los resultados 🚀
