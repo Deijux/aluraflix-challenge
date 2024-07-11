@@ -40,14 +40,14 @@ Si al contrario quieres comprobar todas las funcionalidades de la página haz lo
    npm install
    ```
 
-3. Corre el servidor de desarrollo y la base de datos:
+3. Corre la base de datos y el servidor de desarrollo:
 
    ```bash
-   # Inicia el servidor de desarrollo con npm
-   npm run dev
-
    # Inicia la base de datos
    npm run database
+
+   # Inicia el servidor de desarrollo con npm
+   npm run dev
    ```
 
 4. Abre [**http://localhost:5173**](http://localhost:5173/) en tu navegador para ver los resultados 🚀
