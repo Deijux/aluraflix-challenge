@@ -51,7 +51,6 @@ function DataProvider({ children }) {
         error,
       )
       setCategories(CategoryData)
-      console.log(CategoryData)
     }
   }
 
