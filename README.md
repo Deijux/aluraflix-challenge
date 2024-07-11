@@ -17,7 +17,7 @@ AluraFlix es un proyecto realizado para el challenge React de Alura Latam Grupo 
 
 ## 🚨 Importante
 
-Si quieres prrevisualizar la página web puedes acceder al siguiente [link](https://aluraflix-challenge-amber.vercel.app/), pero no cuenta con las funcionalidade de añadir, editar y eliminar.
+Si quieres previsualizar la página web puedes acceder al siguiente [link](https://aluraflix-challenge-amber.vercel.app/), pero no cuenta con las funcionalidade de añadir, editar y eliminar.
 
 <p>
 Si al contrario quieres comprobar todas las funcionalidades de la página haz los siguientes pasos!
@@ -36,18 +36,18 @@ Si al contrario quieres comprobar todas las funcionalidades de la página haz lo
    - Usa [npm](https://www.npmjs.com/) para instalar y manejar las dependencias.
 
    ```bash
-   # instala las depencias mediante npm
+   # instala las dependencias mediante npm
    npm install
    ```
 
-3. Corre el servidor de desarrollo y la base de datos:
+3. Corre la base de datos y el servidor de desarrollo:
 
    ```bash
-   # Inicia el servidor de desarrollo con npm
-   npm run dev
-
    # Inicia la base de datos
    npm run database
+
+   # Inicia el servidor de desarrollo con npm
+   npm run dev
    ```
 
 4. Abre [**http://localhost:5173**](http://localhost:5173/) en tu navegador para ver los resultados 🚀
