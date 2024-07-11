@@ -1,5 +1,5 @@
 import { PropTypes } from 'prop-types'
-import backgroundBanner from '../../assets/backgroundBanner.png'
+import backgroundBanner from '../../assets/backgroundBanner.webp'
 import Style from './Banner.module.css'
 
 function Banner({ data }) {
