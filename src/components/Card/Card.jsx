@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types'
-import TrashIcon from '../../assets/trashIcon.png'
-import EditIcon from '../../assets/editIcon.png'
+import { FaRegTrashAlt } from 'react-icons/fa'
+import { RiEdit2Line } from 'react-icons/ri'
 import Style from './Card.module.css'
 
 function Card({ style, divider, onEdit, onDelete, image, link }) {
@@ -12,11 +12,11 @@ function Card({ style, divider, onEdit, onDelete, image, link }) {
         target='_blank'
         rel='noopener noreferrer'
       >
-        <img src={image} width='530px' alt='Card Example' />
+        <img src={image} width='530px' alt='Image Card' />
       </a>
       <div style={divider} className={Style.CardInfo}>
         <button className={Style.CardSection} onClick={onDelete}>
-          <img src={TrashIcon} alt='Trash Icon' />
+          <FaRegTrashAlt size={20} />
           <p>BORRAR</p>
         </button>
         <button
@@ -25,7 +25,7 @@ function Card({ style, divider, onEdit, onDelete, image, link }) {
             onEdit()
           }}
         >
-          <img src={EditIcon} alt='Edit Icon' />
+          <RiEdit2Line size={20} />
           <p>EDITAR</p>
         </button>
       </div>

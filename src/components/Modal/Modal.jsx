@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react'
 import { PropTypes } from 'prop-types'
 import Input from '../Input/Input'
 import OptionList from '../OptionList/OptionList'
-import ExitIcon from '../../assets/exitIcon.png'
+import { GiCancel } from 'react-icons/gi'
 import Style from './Modal.module.css'
 
 function Modal({ isOpen, onClose, cardActive, onUpdate, categories }) {
@@ -44,7 +44,7 @@ function Modal({ isOpen, onClose, cardActive, onUpdate, categories }) {
       <div className={Style.modal}>
         <h2>EDITAR CARD:</h2>
         <button className={Style.exitIcon} onClick={onClose}>
-          <img src={ExitIcon} alt='Close Icon' />
+          <GiCancel size={35} color='white' />
         </button>
         <form className={Style.form}>
           <div className={Style.allInputs}>
