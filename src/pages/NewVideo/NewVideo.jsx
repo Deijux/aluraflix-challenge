@@ -86,8 +86,8 @@ function NewVideo() {
     setData({ ...data, [id]: value })
   }
 
-  const handleButtonDisabled = value => {
-    if (isFormFilled(data) && value) {
+  const handleButtonDisabled = () => {
+    if (isFormFilled(data) && isErrorsActive()) {
       setButtonDisabled(false)
     } else {
       setButtonDisabled(true)
@@ -104,64 +104,26 @@ function NewVideo() {
   }, [categories])
 
   useEffect(() => {
-    if (errors.title && fields.title) {
-      setStyleError({
-        ...styleError,
-        titleColorText: { color: styleErrorApply.colorText },
-        titleBorderColor: { border: styleErrorApply.border },
-      })
-      console.log('hay error')
-    } else if (!errors.title) {
-      setStyleError({
-        ...styleError,
-        titleColorText: {},
-        titleBorderColor: {},
-      })
+    const updateErrorStyle = field => {
+      if (errors[field] && fields[field]) {
+        setStyleError(prevStyleError => ({
+          ...prevStyleError,
+          [`${field}ColorText`]: { color: styleErrorApply.colorText },
+          [`${field}BorderColor`]: { border: styleErrorApply.border },
+        }))
+      } else if (!errors[field]) {
+        setStyleError(prevStyleError => ({
+          ...prevStyleError,
+          [`${field}ColorText`]: {},
+          [`${field}BorderColor`]: {},
+        }))
+      }
     }
 
-    if (errors.photo && fields.photo) {
-      setStyleError({
-        ...styleError,
-        photoColorText: { color: styleErrorApply.colorText },
-        photoBorderColor: { border: styleErrorApply.border },
-      })
-    } else if (!errors.photo) {
-      setStyleError({
-        ...styleError,
-        photoColorText: {},
-        photoBorderColor: {},
-      })
-    }
+    const fieldsToCheck = ['title', 'photo', 'link', 'description']
+    fieldsToCheck.forEach(updateErrorStyle)
 
-    if (errors.link && fields.link) {
-      setStyleError({
-        ...styleError,
-        linkColorText: { color: styleErrorApply.colorText },
-        linkBorderColor: { border: styleErrorApply.border },
-      })
-    } else if (!errors.link) {
-      setStyleError({
-        ...styleError,
-        linkColorText: {},
-        linkBorderColor: {},
-      })
-    }
-
-    if (errors.description && fields.description) {
-      setStyleError({
-        ...styleError,
-        descriptionColorText: { color: styleErrorApply.colorText },
-        descriptionBorderColor: { border: styleErrorApply.border },
-      })
-    } else if (!errors.description) {
-      setStyleError({
-        ...styleError,
-        descriptionColorText: {},
-        descriptionBorderColor: {},
-      })
-    }
-
-    handleButtonDisabled(isErrorsActive())
+    handleButtonDisabled()
   }, [errors, fields, data])
 
   return (
