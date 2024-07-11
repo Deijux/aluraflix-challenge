@@ -43,9 +43,6 @@ export const FormValidate = async formData => {
     errors.description = 'La descripción no puede tener más de 500 caracteres.'
   }
 
-  errors.titleBorderColor = { border: '2px solid red' }
-  errors.titleColorText = { color: 'red' }
-
   return errors
 }
 
