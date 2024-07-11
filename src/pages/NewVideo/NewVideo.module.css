@@ -113,6 +113,7 @@
 
 .buttons > button:first-child:disabled {
   border: none;
+  cursor: default;
 }
 
 @media (width <= 470px) {
