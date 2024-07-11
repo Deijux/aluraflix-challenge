@@ -71,6 +71,30 @@
       "photo": "https://i.ytimg.com/vi/6N3OkLCfK-0/maxresdefault.jpg",
       "link": "https://www.youtube.com/watch?v=6N3OkLCfK-0",
       "description": "En este video nuestra invitada, Andyara, nos explicará que són las muy conocidas hoy en día metodologias ágiles y nos comentará un poco sobre como aplicarlas y cuáles son los beneficios de utilizarlas en su equipo o empresa."
+    },
+    {
+      "id": "5a59",
+      "title": "5 Habilidades que te darán ventajas sobre otros Programadores",
+      "category": "BACK END",
+      "photo": "https://i.ytimg.com/vi/9YxUt3sGovA/maxresdefault.jpg",
+      "link": "https://www.youtube.com/embed/9YxUt3sGovA?si=aInOKpgAha5XWw5D",
+      "description": "Si eres un programador, desarrollador de software o principiante en estas areas, estas son 5 habilidades que puedes aprender para poder obtener una ventaja competitiva sobre otros programadores al momento de trabajar para una empresa de software."
+    },
+    {
+      "id": "b0c8",
+      "title": "CONSEJOS para DESARROLLADORES de SOFTWARE Pt.1",
+      "category": "BACK END",
+      "photo": "https://i.ytimg.com/vi/VrR45M52zY4/maxresdefault.jpg",
+      "link": "https://www.youtube.com/embed/VrR45M52zY4?si=ySJVyzjkeelsBK2D",
+      "description": "El primer video que saque hablando sobre por que renuncie como desarrollador se viralizo y muchas personas que apenas estaban cursando la carrera querian que siguiera hablando sobre el tema asi que aqui les doy algunos consejos para sus primeros trabajos, como ser un buen desarrollador y para los empresarios iguial, como tener contento al personal"
+    },
+    {
+      "id": "4ed6",
+      "title": "Aprende CONCEPTOS antes que CÓDIGO",
+      "category": "FRONT END",
+      "photo": "https://i.ytimg.com/vi/75EQEJ6VMR8/maxresdefault.jpg",
+      "link": "https://www.youtube.com/embed/75EQEJ6VMR8?si=xx2vyqnBaR3weWvr",
+      "description": "Este es un punto muy importante, pues sin conocer los conceptos antes de codificar, desaprovechamos el aprender a programar de forma correcta y con bases que nos permiten después trabajar con cualquier lenguaje o framework."
     }
   ],
   "categorias": [
