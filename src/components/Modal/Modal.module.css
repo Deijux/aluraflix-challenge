@@ -63,6 +63,11 @@
   gap: 5px;
 }
 
+.error {
+  color: red;
+  font-size: 18px;
+}
+
 .input > textarea {
   background-color: transparent;
   color: #fff;
@@ -97,6 +102,13 @@
   color: var(--color-azul);
   box-shadow: inset 0px 0px 10px 0px var(--color-azul);
   border: 2px solid var(--color-azul);
+}
+
+.buttons > button:first-child:disabled {
+  color: #fff;
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
 }
 
 @media (width < 437px) {
