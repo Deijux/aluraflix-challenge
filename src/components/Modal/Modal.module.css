@@ -112,6 +112,18 @@
 }
 
 @media (width < 437px) {
+  .modal {
+    padding: 20px 50px;
+  }
+
+  .modal > h2 {
+    font-size: 24px;
+  }
+
+  .allInputs {
+    gap: 15px;
+  }
+
   .buttons {
     flex-flow: column wrap;
   }
