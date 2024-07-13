@@ -17,12 +17,13 @@
   margin: 0px var(--items-padding) 0px 0px;
 }
 
-.imgLink {
+.containerImage {
   height: 100%;
   display: flex;
+  cursor: pointer;
 }
 
-.imgLink > img {
+.containerImage > img {
   width: 100%;
   border-radius: 15px 15px 0px 0px;
   z-index: -1;

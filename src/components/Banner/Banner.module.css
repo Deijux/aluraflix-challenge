@@ -50,7 +50,7 @@
   text-wrap: balance;
 }
 
-.imageLink {
+.containerImage {
   width: 100%;
   max-width: 800px;
   min-width: 460px;
@@ -58,6 +58,7 @@
   border-radius: 20px;
   border: 5px solid var(--color-front);
   display: flex;
+  cursor: pointer;
 }
 
 .playerImage {

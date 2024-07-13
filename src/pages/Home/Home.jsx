@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Banner from '../../components/Banner/Banner'
 import Category from '../../components/Category/Category'
+import WatchVIdeo from '../../components/WatchVideo/WatchVideo'
 import Modal from '../../components/Modal/Modal'
 import { useData } from '../../contexts/DataContext'
 import Style from './Home.module.css'
@@ -15,6 +16,8 @@ function Home() {
   } = useData()
   const [modalOpen, setModalOpen] = useState(false)
   const [cardOpen, setCardOpen] = useState(null)
+  const [watchVideoOpen, setWatchVideoOpen] = useState(false)
+  const [watchVideoInfo, setWatchVideoInfo] = useState({})
 
   const handleModalClose = () => {
     setModalOpen(false)
@@ -33,11 +36,22 @@ function Home() {
     editVideo(cardUpdated.id, cardUpdated)
   }
 
+  const handleWatchVideo = data => {
+    setWatchVideoInfo(data)
+    setWatchVideoOpen(true)
+  }
+
+  const handleWatchVideoClose = () => {
+    setWatchVideoOpen(false)
+  }
+
   return (
     <>
       <main className={Style.main}>
         {categories.length === 0 && <h2>Cargando...</h2>}
-        {categories.length !== 0 && <Banner data={banner} />}
+        {categories.length !== 0 && (
+          <Banner data={banner} onCardWatch={handleWatchVideo} />
+        )}
         {categories.map(category => (
           <Category
             key={category.id}
@@ -45,9 +59,15 @@ function Home() {
             cards={videos.filter(video => video?.category === category.name)}
             onCardEdit={handleCardEdit}
             OnCardDelete={handleDelete}
+            onCardWatch={handleWatchVideo}
           />
         ))}
       </main>
+      <WatchVIdeo
+        cardActive={watchVideoInfo}
+        isOpen={watchVideoOpen}
+        onClose={handleWatchVideoClose}
+      />
       <Modal
         cardActive={cardOpen}
         isOpen={modalOpen}

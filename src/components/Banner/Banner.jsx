@@ -2,7 +2,7 @@ import { PropTypes } from 'prop-types'
 import backgroundBanner from '../../assets/backgroundBanner.webp'
 import Style from './Banner.module.css'
 
-function Banner({ data }) {
+function Banner({ data, onCardWatch }) {
   const dataInfo = data[0]
   return (
     <section className={Style.banner}>
@@ -20,18 +20,18 @@ function Banner({ data }) {
               <p>{dataInfo?.description}</p>
             </div>
           </div>
-          <a
-            className={Style.imageLink}
-            href={dataInfo?.link}
-            target='_blank'
-            rel='noopener noreferrer'
+          <div
+            className={Style.containerImage}
+            onClick={() => {
+              onCardWatch(dataInfo)
+            }}
           >
             <img
               className={Style.playerImage}
               src={dataInfo?.photo}
               alt='Player'
             />
-          </a>
+          </div>
         </>
       )}
 
@@ -46,6 +46,7 @@ function Banner({ data }) {
 
 Banner.propTypes = {
   data: PropTypes.array.isRequired,
+  onCardWatch: PropTypes.func.isRequired,
 }
 
 export default Banner
