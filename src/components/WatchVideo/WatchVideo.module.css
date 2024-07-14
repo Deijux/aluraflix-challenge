@@ -1,6 +1,6 @@
 .container {
   position: fixed;
-  background-color: #00000077;
+  background-color: #03122fc2;
   width: 100%;
   height: 100vh;
   top: 0;
@@ -8,6 +8,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 }
 
 .box {
@@ -15,10 +16,11 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: #262626;
+  background-color: #03122f;
+  border: 3px solid #6bd1ff;
+  border-radius: 10px;
   width: 100%;
   max-width: 800px;
-  border-radius: 30px;
   padding: 30px 50px;
   position: relative;
 }
@@ -65,4 +67,10 @@
 .information {
   font-size: 20px;
   text-wrap: balance;
+}
+
+@media (width > 550px) {
+  .container {
+    padding: 10px 50px;
+  }
 }
