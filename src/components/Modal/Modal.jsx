@@ -60,7 +60,6 @@ function Modal({ isOpen, onClose, cardActive, onUpdate, categories }) {
   const isFormFilled = formData => {
     return (
       formData.title.trim() !== '' &&
-      formData.category.trim() !== '' &&
       formData.photo.trim() !== '' &&
       formData.link.trim() !== '' &&
       formData.description.trim() !== ''
@@ -70,7 +69,6 @@ function Modal({ isOpen, onClose, cardActive, onUpdate, categories }) {
   const isErrorsActive = () => {
     return (
       errors.title === undefined &&
-      errors.category == undefined &&
       errors.photo === undefined &&
       errors.link === undefined &&
       errors.description === undefined

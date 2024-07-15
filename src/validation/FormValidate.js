@@ -6,7 +6,7 @@ export const FormValidate = async formData => {
     trimmedFormData[key] = formData[key] ? formData[key].toString().trim() : ''
   }
 
-  // Validate title
+  //* Se valida el titulo
   if (!trimmedFormData.title) {
     errors.title = 'El título es requerido.'
   } else if (trimmedFormData.title.length < 3) {
@@ -15,26 +15,21 @@ export const FormValidate = async formData => {
     errors.title = 'El título no puede tener más de 200 caracteres.'
   }
 
-  // Validate category
-  if (!trimmedFormData.category) {
-    errors.category = 'El equipo es requerido.'
-  }
-
-  // Validate photo URL
+  //* Se valida la url de la foto
   if (!trimmedFormData.photo) {
     errors.photo = 'La URL de la foto es requerida.'
   } else if (!isPhotoURLValid(trimmedFormData.photo)) {
     errors.photo = 'La URL de la foto no es válida o no es una foto válida.'
   }
 
-  // Validate video URL
+  //* Se valida la url del video
   if (!trimmedFormData.link) {
     errors.link = 'La URL del video es requerida.'
   } else if (!isVideoURLValid(trimmedFormData.link)) {
     errors.link = 'La URL del video no es válida o no es un video válido.'
   }
 
-  // Validate description
+  //* Se valida la descripción
   if (!trimmedFormData.description) {
     errors.description = 'La descripción es requerida.'
   } else if (trimmedFormData.description.length < 10) {
@@ -46,14 +41,14 @@ export const FormValidate = async formData => {
   return errors
 }
 
-// Validate photo URL
+//* Patrón de la url de imagen
 const isPhotoURLValid = url => {
   const photoUrlPattern = /\.(jpg|jpeg|png|gif|webp)$/i
   return photoUrlPattern.test(url)
 }
 
-// Validate video URL
+//* Patrón de la url de video
 const isVideoURLValid = url => {
-  const videoUrlPattern = /^https:\/\/www\.youtube\.com\/watch\?v=[a-zA-Z0-9_-]/
+  const videoUrlPattern = /^https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]/
   return videoUrlPattern.test(url)
 }
