@@ -67,6 +67,9 @@
 .information {
   font-size: 20px;
   text-wrap: balance;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 @media (width > 550px) {

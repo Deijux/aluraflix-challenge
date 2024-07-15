@@ -27,6 +27,7 @@ function WatchVideo({ cardActive, isOpen, onClose }) {
           ></iframe>
         </div>
         <div className={Style.information}>
+          <h3 className={Style.titleDescription}>Descripción</h3>
           <p>{cardActive.description}</p>
         </div>
       </section>
