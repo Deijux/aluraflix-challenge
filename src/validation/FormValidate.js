@@ -49,6 +49,7 @@ const isPhotoURLValid = url => {
 
 //* Patrón de la url de video
 const isVideoURLValid = url => {
-  const videoUrlPattern = /^https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]/
+  const videoUrlPattern =
+    /^https:\/\/www\.youtube\.com\/embed\/[a-zA-Z0-9_-]+\?si=[a-zA-Z0-9_-]+$/
   return videoUrlPattern.test(url)
 }
