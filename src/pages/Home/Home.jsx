@@ -5,6 +5,7 @@ import WatchVIdeo from '../../components/WatchVideo/WatchVideo'
 import Modal from '../../components/Modal/Modal'
 import { useData } from '../../contexts/DataContext'
 import Style from './Home.module.css'
+import Loader from '../../components/Loader/Loader'
 
 function Home() {
   const {
@@ -48,7 +49,7 @@ function Home() {
   return (
     <>
       <main className={Style.main}>
-        {categories.length === 0 && <h2>Cargando...</h2>}
+        {categories.length === 0 && <Loader />}
         {categories.length !== 0 && (
           <Banner data={banner} onCardWatch={handleWatchVideo} />
         )}
