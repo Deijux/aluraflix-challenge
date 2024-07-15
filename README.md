@@ -51,3 +51,30 @@ Si al contrario quieres comprobar todas las funcionalidades de la página haz lo
    ```
 
 4. Abre [**http://localhost:5173**](http://localhost:5173/) en tu navegador para ver los resultados 🚀
+
+## 📝 Como añadir un video
+
+### Campo Título
+
+El valor que acepta este campo es tipo texto, aquí simplemente tienes que escribir el título del video que vas a guardar.
+
+### Campo Categoria
+
+En este campo hay que seleccionar la categoria que pertenece el video, en total hay 3 categorias disponibles.
+
+### Campo Imagen
+
+El valor que acepta este campo es tipo url, debe finalizar con algunas de estas extensiones: (jpg, jpeg, png, gif o webp)
+
+### Campo Video
+
+El valor que acepta este campo es tipo url, debe de contener la siguiente estructura: "https://youtube.com/embed/(El identificador del video)". Este tipo de url se consigue en el siguiente apartado dentro de la página de YouTube:
+
+1. Como primer paso es ir a un video, y dar click en "Compartir".
+2. Dale clic a la opción "Incorporar"
+3. Copiar la url que se muestra a continuación:
+   <img src='./src/assets/Captura-instrucciones.png' width='700px'/>
+
+### Campo Descripción
+
+El valor que acepta este campo es tipo texto, aquí simplemente tienes que escribir la descripción del video que vas a guardar.
