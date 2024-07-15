@@ -17,7 +17,7 @@ AluraFlix es un proyecto realizado para el challenge React de Alura Latam Grupo 
 
 ## 🚨 Importante
 
-Si quieres previsualizar la página web puedes acceder al siguiente [link](https://aluraflix-challenge-amber.vercel.app/), pero no cuenta con las funcionalidade de añadir, editar y eliminar.
+Si quieres previsualizar la página web puedes acceder al siguiente [link](https://aluraflix-challenge-amber.vercel.app/), pero no cuenta con las funcionalidades de añadir, editar y eliminar.
 
 <p>
 Si al contrario quieres comprobar todas las funcionalidades de la página haz los siguientes pasos!
@@ -58,9 +58,9 @@ Si al contrario quieres comprobar todas las funcionalidades de la página haz lo
 
 El valor que acepta este campo es tipo texto, aquí simplemente tienes que escribir el título del video que vas a guardar.
 
-### Campo Categoria
+### Campo Categoría
 
-En este campo hay que seleccionar la categoria que pertenece el video, en total hay 3 categorias disponibles.
+En este campo hay que seleccionar la categoría que pertenece el video, en total hay 3 categorías disponibles.
 
 ### Campo Imagen
 
